@@ -51,7 +51,8 @@ if(err){
     res.send({"msg":"err","err":err})
 } else if(type=="admin"){
     var token = jwt.sign({myshop:'MYSHOP'}, 'hehe', { expiresIn: '7d' });
-    res.send({"msg":"admin login success ","token":token})
+    var rtoken = jwt.sign({myshop:'SHOP'}, 'hahe', { expiresIn: '10d' });
+    res.send({"msg":"admin login success ","token":token,"refresh_token":rtoken})
 }  else{
     res.send({"msg":" user login Success "})
 }
