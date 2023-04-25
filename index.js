@@ -30,11 +30,11 @@ app.post("/admin",(req,res)=>{
     res.send({"msg":"ordered success"})
 })
 
-app.delete("/admin",(req,res)=>{
-let _id=req.query._id;
-Admin.findByIdAndDelete(_id)
+app.delete("/admin",async(req,res)=>{
+let id=req.query.id;
+let data=await Admin.findByIdAndDelete(id)
 
-res.send({"msg":"order deleted "})
+res.send({"msg":"order deleted","data":data})
 
 })
 
