@@ -9,6 +9,24 @@ const User = mongoose.model("user",mongoose.Schema({
   type:String
 }))
 
+const Admin = mongoose.model('admin',mongoose.Schema({
+product_name: {
+    type: [String], // Array of strings
+    required: true
+  },
+  price: {
+    type: [Number],
+    required: true
+  },
+  quantity: {
+    type: Number,
+   
+  }
+
+
+}))
+
+
 
  const Limited=mongoose.model("limited",mongoose.Schema({
 name:String,
@@ -58,4 +76,4 @@ discription:String,
 
 
 
-  module.exports ={connection ,Limited,New , Skin, Fashion , Fregrence ,User}
+  module.exports ={connection ,Limited,New , Skin, Fashion , Fregrence ,User,Admin}

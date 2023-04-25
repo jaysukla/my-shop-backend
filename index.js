@@ -1,6 +1,6 @@
 const express = require('express');
 var cors = require('cors')
-const {connection ,Limited,New , Skin, Fashion , Fregrence ,User} = require('./schema/schema')
+const {connection ,Limited,New , Skin, Fashion , Fregrence ,User,Admin} = require('./schema/schema')
 var jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
@@ -10,6 +10,33 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
+
+
+// admin start here 
+
+app.get("/admin",async(req,res)=>{
+
+let data = await Admin.find()
+
+res.send(data)
+
+})
+
+
+
+app.post("/admin",(req,res)=>{
+    let data=req.body;
+    Admin.insertMany([data])
+    res.send({"msg":"ordered success"})
+})
+
+app.delete("/admin",(req,res)=>{
+let _id=req.query._id;
+Admin.findByIdAndDelete(_id)
+
+res.send({"msg":"order deleted "})
+
+})
 
 
 app.get("/", async(req,res)=>{
